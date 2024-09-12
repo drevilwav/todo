@@ -174,9 +174,14 @@ button:focus {
   gap: 10px; /* Отступ между чекбоксом и текстом */
 }
 
-/* Скрываем стандартный чекбокс */
+
 .checkbox-input {
-  display: none;
+  position: absolute;
+  opacity: 0;
+  width: 200px;
+  height: 20px;
+  z-index: 5;
+  cursor: pointer;
 }
 
 .checkbox-container,
@@ -191,6 +196,7 @@ button:focus {
   padding-left: 20px; /* Отступ для кастомного чекбокса */
   color: #333;
   font-size: 16px;
+
 }
 
 /* Псевдоэлемент для чекбокса */
