@@ -3,7 +3,6 @@ import { Task } from './Task.js';
 import { TaskList } from './TaskList.js';
 import { TaskDisplay } from './TaskDisplay.js';
 
-const main = document.querySelector('.main');
 const allButton = document.querySelector('#all');
 const todayButton = document.querySelector('#today');
 const tomorrowButton = document.querySelector('#tomorrow');
@@ -12,8 +11,6 @@ const addTaskButton = document.querySelector('#add');
 const addTaskWindow = document.querySelector('.add-task-window');
 const cancelAddTaskButton = document.querySelector('.cancel-task-btn');
 const addTaskForm = document.querySelector('#task-form');
-const editButton = document.querySelector('#edit');
-const deleteButton = document.querySelector('#delete');
 
 // Создаем экземпляры TaskList и TaskDisplay
 const taskList = new TaskList();

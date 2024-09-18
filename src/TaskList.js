@@ -3,7 +3,6 @@ export class TaskList {
     this.tasks = [];
   }
   addTask(task) {
-    task.id = Date.now();  // Генерируем уникальный id для каждой задачи
     this.tasks.push(task);
   }
   deleteTask(id) {
@@ -11,6 +10,13 @@ export class TaskList {
   }
   getTasks() {
     return this.tasks;
+  }
+
+  getUniqueProjects() {
+    const projects = this.tasks
+      .map(task => task.project)
+      .filter(project => project && project.trim() !== '');
+    return [...new Set(projects)].sort((a, b) => a.localeCompare(b));
   }
 
   getTasksForToday() {
