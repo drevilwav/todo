@@ -17,7 +17,29 @@ const taskList = new TaskList();
 const taskDisplay = new TaskDisplay(taskList, handleEditTask);
 taskDisplay.renderTaskList();
 
+// Функция для обновления списка проектов
+function updateProjects() {
+  const projectsLists = document.querySelector('#projects-list');
+  projectsLists.innerHTML = '';
 
+  const projects = taskList.getUniqueProjects();
+
+  projects.forEach(project => {
+    const projectElement = document.createElement('div');
+    projectElement.classList.add('section');
+    projectElement.textContent = project;
+
+    // Добавляем обработчик клика для фильтрации задач по проекту
+    projectElement.addEventListener('click', () => {
+      const filteredTasks = taskList.getTasks().filter(task => task.project === project);
+      taskDisplay.renderTaskList(filteredTasks)
+    });
+
+    projectsLists.appendChild(projectElement);   
+  });
+}
+
+updateProjects()
 
 // Отображаем окно добавления задачи при нажатии на кнопку "Add Task"
 addTaskButton.addEventListener('click', () => {
@@ -48,6 +70,8 @@ addTaskForm.addEventListener('submit', (event) => {
 
   // Обновляем отображение списка задач
   taskDisplay.renderTaskList();
+
+  updateProjects();
 
   // Скрываем окно добавления задачи
   addTaskWindow.classList.add('hidden');
@@ -97,7 +121,7 @@ function handleEditTask(id) {
     editTaskForm.removeEventListener('submit', onSubmit);
 
     // Обновляем список проектов
-    // updateProjects();
+    updateProjects();
   }
 
     editTaskForm.addEventListener('submit', onSubmit);

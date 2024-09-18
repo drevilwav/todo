@@ -12,6 +12,10 @@ export class TaskList {
     return this.tasks;
   }
 
+  getTaskById(id) {
+    return this.tasks.find(task => task.id === id);
+  }
+
   getUniqueProjects() {
     const projects = this.tasks
       .map(task => task.project)
